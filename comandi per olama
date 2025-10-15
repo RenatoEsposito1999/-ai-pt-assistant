@@ -1,0 +1,39 @@
+# Controlla se Ollama è già in esecuzione
+brew services list | grep ollama
+
+#AVVIA OLLAMA (se non è attivo)
+
+bash
+# Metodo CONSIGLIATO - come servizio
+brew services start ollama
+
+
+VERIFICA FUNZIONAMENTO
+
+bash
+# Controlla che risponda
+curl http://localhost:11434/api/tags
+
+# O semplicemente
+ollama list
+
+. SE SERVE, SCARICA MODELLO (solo prima volta)
+
+bash
+# Scegli uno di questi:
+ollama pull llama3.1:8b         # Bilanciato
+# oppure
+ollama pull llama3.1:70b        # Più potente (se hai RAM)
+
+
+5. USA IL MODELLO
+
+bash
+# Chat interattiva
+ollama run llama3.1:8b
+
+# O via API per il tuo CRM
+curl -X POST http://localhost:11434/api/generate -d '{
+  "model": "llama3.1:8b",
+  "prompt": "Ciao, come stai?"
+}'

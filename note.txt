@@ -1,0 +1,5 @@
+Una volta che il sistema base funziona, potrebbe essere possibile aggiungere:
+- Generazione di progressioni (“Aumenta del 5% il carico ogni 2 settimane”)
+- Feedback AI (“L’utente ha saltato 2 allenamenti, suggerisci una recovery week”)
+- Spiegazioni automatiche (“Lo squat allena i quadricipiti e i glutei, ottimo per la forza delle gambe”)
+- Nutritional tip generator (solo informativo)
