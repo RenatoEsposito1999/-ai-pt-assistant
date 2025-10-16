@@ -20,3 +20,49 @@ Una volta che il sistema base funziona, potrebbe essere possibile aggiungere:
 - Feedback AI (“L’utente ha saltato 2 allenamenti, suggerisci una recovery week”)
 - Spiegazioni automatiche (“Lo squat allena i quadricipiti e i glutei, ottimo per la forza delle gambe”)
 - Nutritional tip generator (solo informativo)
+
+
+
+STRUTTURA
+AI-PT-ASSISTANT/
+├── app/
+│   ├── __init__.py
+│   ├── main.py                 # Punto di ingresso principale
+│   ├── core/                   # Configurazioni e setup
+│   │   ├── __init__.py
+│   │   ├── config.py           # Variabili d'ambiente e configurazioni
+│   │   └── security.py         # Autenticazione, JWT, hash
+│   ├── api/                    # Layer API/Routes
+│   │   ├── __init__.py
+│   │   ├── deps.py             # Dependencies (DB, auth, etc.)
+│   │   └── v1/                 # Versioning API
+│   │       ├── __init__.py
+│   │       ├── endpoints/
+│   │       │   ├── __init__.py
+│   │       │   ├── auth.py     # Endpoint di login/register
+│   │       │   ├── users.py    # Endpoint per gli utenti
+│   │       │   └── items.py    # Altri endpoint
+│   │       └── api.py          # Router versione v1
+│   ├── models/                 # Modelli DB (SQLAlchemy, Pydantic)
+│   │   ├── __init__.py
+│   │   ├── database.py         # Configurazione DB
+│   │   ├── user.py             # Modelli utente
+│   │   └── schemas.py          # Pydantic schemas
+│   ├── services/               # Business logic
+│   │   ├── __init__.py
+│   │   ├── auth_service.py
+│   │   ├── user_service.py
+│   │   └── email_service.py
+│   └── utils/                  # Utilities e helpers
+│       ├── __init__.py
+│       └── database.py         # Connection, cursor helpers
+├── tests/                      # Test suite
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── test_api/
+│   └── test_services/
+├── alembic/                    # Database migrations
+│   └── versions/
+├── requirements.txt
+├── .env.example
+└── Dockerfile
