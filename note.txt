@@ -1,3 +1,20 @@
+Iniziare dal backend:
+Configurare sqlite  FATTO 
+Creare register e login con fastapi
+"AGGIUNGERE CORS"
+Provare con Swagger UI di fastapi 
+
+Migliorare il backend con password hashing
+Aggiungere KWT token per autenticazione 
+creare un endpoint /me che restituisce i dati utente loggato. 
+
+
+Poi passo al front con react per creare form login e registrazione
+collego agli endpost di fast (collegare Axios)
+Gestire il token KWT nel localStorage
+
+
+Aggiungere redirect, errori e logout etc. insomma completare l'app. 
 Una volta che il sistema base funziona, potrebbe essere possibile aggiungere:
 - Generazione di progressioni (“Aumenta del 5% il carico ogni 2 settimane”)
 - Feedback AI (“L’utente ha saltato 2 allenamenti, suggerisci una recovery week”)
