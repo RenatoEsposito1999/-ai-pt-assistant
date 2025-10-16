@@ -1,1 +1,0 @@
-#chiamate a Ollama
