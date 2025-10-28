@@ -66,3 +66,17 @@ AI-PT-ASSISTANT/
 ├── requirements.txt
 ├── .env.example
 └── Dockerfile
+
+
+
+Frontend (SPA)
+React / Next.js
+TailwindCSS + shadcn/ui
+JWT based auth
+Backend (FastAPI + Python)
+Database: PostgreSQL (consigliato) o SQLite per sviluppo
+ORM: SQLModel (perfetto con FastAPI) o SQLAlchemy + Alembic per migrazioni
+Autenticazione: OAuth2 + JWT
+Invio email: FastAPI-Mail
+WhatsApp: Twilio API
+Pronto per AI: puoi mettere /ai/genera_scheda o /ai/suggerisci_modifiche
