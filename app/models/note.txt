@@ -1,4 +1,0 @@
-in models c'è il db quindi per connessioni etc. 
-le entità.py dove ci sono solo dati e definizioni di metodi semplici tipo to dict. <-- è un istanza dei dati nel db durante l'esecuzione del programma.
-in schema_entita definisco la validazione API, cioè definisco cosa deve ricevere l'api e cosa restituisce. 
-PER LE OPERAZIONI NEL DB BISOGNA ANDARE NEL SERVICE. 

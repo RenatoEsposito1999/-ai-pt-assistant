@@ -1,1 +1,0 @@
-In questa cartella ci sono tutti gli endpoint dell'app quindi le richieste arrivano a questi endpoint.
