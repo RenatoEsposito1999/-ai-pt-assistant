@@ -1,0 +1,55 @@
+✅ Flusso completo del caso d’uso "Registrazione"
+1️⃣ L’utente clicca il bottone nella View
+La View cattura l’evento ma non contiene logica.
+Il bottone ha un listener legato a un metodo nel Controller.
+2️⃣ Controller
+Raccoglie i dati dal form (nome, email, password…).
+Richiama il metodo nel Service, passando questi dati.
+3️⃣ Service
+Applica la logica applicativa (es. verifica che l’email non esista già).
+Istanzia il Model (es. PersonalTrainer).
+Chiama il DAO per salvare nel database.
+4️⃣ DAO
+Esegue la vera operazione SQL (INSERT nel DB).
+Restituisce al Service l’esito.
+🔁 SE VIENE TUTTO OK:
+Il Service restituisce un “OK” al Controller.
+Il Controller aggiorna la View (es. “registrazione completata”).
+
+
+L'netry point:
+Crei un ApplicationManager o DependencyInjector che:
+istanzia una sola volta tutti i DAO e Service
+avvia solo il controller iniziale (es. login)
+decide quale finestra mostrare dopo (es. dashboard se login ok)
+Esempio:
+public class App {
+    public static void main(String[] args) {
+        DependencyContainer container = new DependencyContainer();
+
+        // Avvio iniziale (schermata di login)
+        LoginController loginController = container.getLoginController();
+        loginController.mostraView();
+    }
+}
+
+Il ocntainer è questo:
+public class DependencyContainer {
+    private ClienteDAO clienteDAO = new ClienteDAOSQLite();
+    private ClientiService clientiService = new ClientiService(clienteDAO);
+
+    public LoginController getLoginController() {
+        return new LoginController(new LoginView(), clientiService);
+    }
+
+    public ClientiController getClientiController() {
+        return new ClientiController(new ClientDashboardView(), clientiService);
+    }
+}
+
+
+
+
+comando javafx
+javac --module-path $PATH_TO_FX --add-modules javafx.controls HelloFX.java
+java --module-path $PATH_TO_FX --add-modules javafx.controls HelloFX
