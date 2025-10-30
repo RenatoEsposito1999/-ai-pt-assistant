@@ -2,7 +2,7 @@ package src.controller;
 import src.model.PersonalTrainer;
 import src.service.PersonalTrainerService;
 import src.view.SingUpView;
-
+import src.utils.*;
 public class SingUpController {
     private SingUpView view;
     private NavigationController navigationController;
@@ -49,7 +49,7 @@ public class SingUpController {
             return false;
         }
 
-        if (!this.isValidEmail(email)){
+        if (!utils.isValidEmail(email)){
             this.view.showError("Formato email non valido");
             return false;
         }
@@ -64,8 +64,5 @@ public class SingUpController {
         
     }
 
-    private boolean isValidEmail(String email) {
-        // Regex base per validazione email
-        return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
-    }
+    
 }

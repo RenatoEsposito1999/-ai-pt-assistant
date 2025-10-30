@@ -2,6 +2,11 @@ package src.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import src.model.PersonalTrainer;
 
 public class PersonalTrainerDAOSQLite{
@@ -34,5 +39,23 @@ public class PersonalTrainerDAOSQLite{
         }
     }
 
+    public Map<String, String> getCredentials(String email, String password) throws SQLException {
+        Map<String, String> credentials = new HashMap<>();
+        
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            String sql = "SELECT email, password FROM personal_trainer WHERE email = ? AND password = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, email);
+                stmt.setString(2, password);
+                
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) {
+                    credentials.put("email", rs.getString("email"));
+                    credentials.put("password", rs.getString("password"));
+                }
+            }
+        }
+        return credentials;
+    }
     
 }
