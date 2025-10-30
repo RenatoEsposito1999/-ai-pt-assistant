@@ -17,39 +17,11 @@ Il Service restituisce un “OK” al Controller.
 Il Controller aggiorna la View (es. “registrazione completata”).
 
 
-L'netry point:
-Crei un ApplicationManager o DependencyInjector che:
-istanzia una sola volta tutti i DAO e Service
-avvia solo il controller iniziale (es. login)
-decide quale finestra mostrare dopo (es. dashboard se login ok)
-Esempio:
-public class App {
-    public static void main(String[] args) {
-        DependencyContainer container = new DependencyContainer();
+Quindi creo il model, creo il dao che è la connessione al db e eventuali funzioni che fanno contorlli a livello di db, vado nel service e do questo dao, nel service c'è la logica di business dell'app
+il service dunque è chiamato dal controller dell'entità. 
 
-        // Avvio iniziale (schermata di login)
-        LoginController loginController = container.getLoginController();
-        loginController.mostraView();
-    }
-}
+# Compila
+javac --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.fxml -cp "lib/*" -d out src/**/*.java
 
-Il ocntainer è questo:
-public class DependencyContainer {
-    private ClienteDAO clienteDAO = new ClienteDAOSQLite();
-    private ClientiService clientiService = new ClientiService(clienteDAO);
-
-    public LoginController getLoginController() {
-        return new LoginController(new LoginView(), clientiService);
-    }
-
-    public ClientiController getClientiController() {
-        return new ClientiController(new ClientDashboardView(), clientiService);
-    }
-}
-
-
-
-
-comando javafx
-javac --module-path $PATH_TO_FX --add-modules javafx.controls HelloFX.java
-java --module-path $PATH_TO_FX --add-modules javafx.controls HelloFX
+# Esegui
+java --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.fxml -cp "out:lib/*" src.MainApp
