@@ -88,3 +88,8 @@ nb-configuration.xml
 ## Miscellaneous
 ##############################
 *.log
+
+*.db
+note.txt
+lib/
+note.txt
