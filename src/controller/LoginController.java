@@ -17,16 +17,20 @@ public class LoginController {
     }
 
     private void initialize() {
-        loginView.getLoginButton().setOnAction(_ -> {
+        this.loginView.getLoginButton().setOnAction(_ -> {
+            this.loginView.setLoading(true);
+            this.loginView.clearError();
             String email = loginView.getEmailField().getText();
             String password = loginView.getPasswordField().getText();
 
             if (email.isEmpty() || password.isEmpty()) {
-                loginView.getErrorLabel().setText("Per favore, compila tutti i campi.");
+                loginView.showError("Per favore, compila tutti i campi.");
+                loginView.setLoading(false);
                 return;
             }
             if (!utils.isValidEmail(email)){
-                this.loginView.getErrorLabel().setText("Formato email non valido");
+                this.loginView.showError("Formato email non valido");
+                loginView.setLoading(false);
                 return;
                 }
             else {
@@ -34,7 +38,8 @@ public class LoginController {
                     PersonalTrainer pt = this.pt_service.authenticate(email,password);
                     this.navigationController.showHome(pt);
                 } catch (Exception e) {
-                    this.loginView.getErrorLabel().setText(e.getMessage());
+                    this.loginView.showError(e.getMessage());
+                    loginView.setLoading(false);
                 }
             }
         });

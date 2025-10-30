@@ -13,6 +13,8 @@ public class MainNavigationController implements NavigationController {
 
     public MainNavigationController(Stage primaryStage, DependencyContainer container ) {
         this.mainView = new MainView(primaryStage);
+        mainView.setOnContactAction(_ -> mainView.showContactDialog());
+        mainView.setOnHelpAction(_ -> mainView.showHelpDialog());
         this.container = container;
     }
 

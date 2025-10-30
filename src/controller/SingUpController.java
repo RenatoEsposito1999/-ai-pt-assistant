@@ -1,17 +1,17 @@
 package src.controller;
 import src.model.PersonalTrainer;
 import src.service.PersonalTrainerService;
-import src.view.SingUpView;
+import src.view.SignUpView;
 import src.utils.*;
 public class SingUpController {
-    private SingUpView view;
+    private SignUpView view;
     private NavigationController navigationController;
     private PersonalTrainerService pt_service;
     private PersonalTrainer pt_model;
     public SingUpController(NavigationController navigationController, PersonalTrainerService pt_service){
         this.navigationController = navigationController;
         this.pt_service = pt_service;
-        this.view = new SingUpView();
+        this.view = new SignUpView();
         this.view.getBackButton().setOnAction(_ -> {
             this.navigationController.showLoginView();
         });
@@ -19,22 +19,27 @@ public class SingUpController {
     }
 
     private void initialize(){
-        this.view.getSignInButton().setOnAction(_->{
+        this.view.getSignUpButton().setOnAction(_->{
+            this.view.setLoading(true);
+            this.view.clearError();
             try {
                 if (this.validateInput()){
                     this.pt_model = this.pt_service.register(this.view.getEmailField().getText(), this.view.getUsernameField().getText(), this.view.getPasswordField().getText());
-                    view.showSuccess("Registrazione avvenuta con successo!");
+                    this.view.showSuccess("Registrazione avvenuta con successo!");
+                    this.view.clearForm();
                     this.navigationController.showHome(this.pt_model);
                 }
             } catch (Exception e) {
                 this.view.showError(e.getMessage());
+                this.view.setLoading(false);
             }
+            this.view.setLoading(false);
             
             });
         }
     
 
-    public SingUpView getView(){
+    public SignUpView getView(){
         return this.view;
     }
 
