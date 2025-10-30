@@ -1,23 +1,28 @@
 package src;
 import javafx.stage.Stage;
-
+import src.dao.*;
+import src.service.PersonalTrainerService;
 class DependencyContainer {
-    //private ClienteDAO clienteDAO = new ClienteDAOSQLite();
-    //private ClientiService clientiService = new ClientiService(clienteDAO);
-
-    //public LoginController getLoginController() {
-    //    return new LoginController(new LoginView(), clientiService);
-    //}
-
-    /**public ClientiController getClientiController() {
-        return new ClientiController(new ClientDashboardView(), clientiService);
-    }*/ 
-    MainNavigationController mainController;
+    
+    private MainNavigationController mainController;
+    private PersonalTrainerService pt_service;
+    private PersonalTrainerDAOSQLite pt_dao;
     public DependencyContainer(Stage primaryStage){
-        this.mainController = new MainNavigationController(primaryStage);
+        DatabaseInitializer.initialize();
+        
+        // creo il dao che serve e il service, 
+        this.pt_dao = new PersonalTrainerDAOSQLite();
+        this.pt_service = new PersonalTrainerService(pt_dao);
+
+
+
+
+
+        
+        this.mainController = new MainNavigationController(primaryStage, this);
     }
 
-    public MainNavigationController getMainController(){
-        return this.mainController;
-    }
+    public MainNavigationController getMainController(){return this.mainController;}
+    public PersonalTrainerService getPT_Service(){return this.pt_service;}
+    public PersonalTrainerDAOSQLite getPT_dao(){return this.pt_dao;}
 }
