@@ -12,10 +12,10 @@ import javafx.scene.layout.VBox;
 
 public class LoginView extends VBox {
 
-    private TextField usernameField;
+    private TextField emailField;
     private PasswordField passwordField;
     private Button loginButton, signinButton;
-    private Label resultLabel;
+    private Label errorLabel;
     
     public LoginView() {
         setAlignment(Pos.CENTER);
@@ -30,31 +30,33 @@ public class LoginView extends VBox {
         formGrid.setHgap(10);
         formGrid.setVgap(10);
 
-        Label usernameLabel = new Label("Username:");
-        usernameField = new TextField();
+        Label emailLabel = new Label("Email:");
+        emailField = new TextField();
         Label passwordLabel = new Label("Password:");
         passwordField = new PasswordField();
 
-        formGrid.add(usernameLabel, 0, 0);
-        formGrid.add(usernameField, 1, 0);
+        formGrid.add(emailLabel, 0, 0);
+        formGrid.add(emailField, 1, 0);
         formGrid.add(passwordLabel, 0, 1);
         formGrid.add(passwordField, 1, 1);
 
         loginButton = new Button("Login");
-        signinButton = new Button("Sign in"); // Corretto: "Sign in" invece di "Sing in"
-        resultLabel = new Label();
+        signinButton = new Button("Sign up");
+        errorLabel = new Label();
+        errorLabel.setStyle("-fx-text-fill: red; -fx-font-size: 12px;");
+        errorLabel.setWrapText(true);
+        errorLabel.setMaxWidth(300);
 
-        // Creazione HBox per i pulsanti
-        HBox buttonBox = new HBox(5); // 10 è lo spacing tra i pulsanti
+        HBox buttonBox = new HBox(5);
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.getChildren().addAll(loginButton, signinButton);
 
-        getChildren().addAll(titleLabel, formGrid, buttonBox, resultLabel);
+        getChildren().addAll(titleLabel, formGrid, buttonBox, errorLabel);
     }
 
-    public TextField getUsernameField() { return this.usernameField; }
+    public TextField getEmailField() { return this.emailField; }
     public PasswordField getPasswordField() { return this.passwordField; }
     public Button getLoginButton() { return this.loginButton; }
     public Button getSigninButton() { return this.signinButton; }
-    public Label getResultLabel() { return this.resultLabel; }
+    public Label getErrorLabel() { return this.errorLabel; }
 }
