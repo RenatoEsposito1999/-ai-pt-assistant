@@ -23,9 +23,10 @@ public class MainNavigationController implements NavigationController {
         mainView.setCenter(loginController.getView());
     }
 
-    public void showDashboard(){
+    public void showDashboard(PersonalTrainer pt_model){
         // Quando implementerai la dashboard, la caricherai qui
         // mainView.setCenter(new DashboardView());
+        // Creo controller dashboard e setto this mainview set center a controller.getview()
     }
 
     public Stage getStage() {
@@ -39,7 +40,4 @@ public class MainNavigationController implements NavigationController {
         this.mainView.setCenter(singUpController.getView());
     }
 
-    public void showHome(PersonalTrainer pt_model){
-        System.out.println("SCHERMATA HOME DA FARE ");
-    }
 }

@@ -27,14 +27,13 @@ public class SingUpController {
                     this.pt_model = this.pt_service.register(this.view.getEmailField().getText(), this.view.getUsernameField().getText(), this.view.getPasswordField().getText());
                     this.view.showSuccess("Registrazione avvenuta con successo!");
                     this.view.clearForm();
-                    this.navigationController.showHome(this.pt_model);
+                    this.navigationController.showDashboard(this.pt_model);
                 }
             } catch (Exception e) {
                 this.view.showError(e.getMessage());
                 this.view.setLoading(false);
             }
             this.view.setLoading(false);
-            
             });
         }
     

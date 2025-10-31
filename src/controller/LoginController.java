@@ -36,7 +36,7 @@ public class LoginController {
             else {
                 try {
                     PersonalTrainer pt = this.pt_service.authenticate(email,password);
-                    this.navigationController.showHome(pt);
+                    this.navigationController.showDashboard(pt);
                 } catch (Exception e) {
                     this.loginView.showError(e.getMessage());
                     loginView.setLoading(false);

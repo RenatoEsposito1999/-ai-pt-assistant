@@ -2,8 +2,7 @@ package src.controller;
 import src.model.PersonalTrainer;
 
 public interface NavigationController {
-    void showDashboard();
+    void showDashboard(PersonalTrainer pt_model);
     void showLoginView();
     void showSingIn();
-    void showHome(PersonalTrainer pt_model);
 }
