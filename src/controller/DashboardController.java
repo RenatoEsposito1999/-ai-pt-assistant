@@ -12,7 +12,7 @@ public class DashboardController {
         this.view = new DashboardView();
         this.navigationController = navigationController;
         this.pt = pt;
-        this.view.setUserInfo(pt.getUsername(), pt.getEmail());
+        this.view.setUserInfo(this.pt.getUsername(), this.pt.getEmail());
         initialize();
     }
     public void initialize(){
