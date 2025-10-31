@@ -120,6 +120,8 @@ public class LoginView extends VBox {
         Label emailLabel = new Label("Email");
         emailLabel.setFont(Font.font("System", FontWeight.MEDIUM, 13));
         emailLabel.setTextFill(Color.web("#2c3e50"));
+
+    
         
         emailField = new TextField();
         emailField.setPromptText("Inserisci la tua email");
@@ -141,6 +143,12 @@ public class LoginView extends VBox {
         passwordField.setPrefHeight(45);
         passwordField.setMaxWidth(300);
         passwordBox.getChildren().addAll(passwordLabel, passwordField);
+
+
+        // To delete
+        emailField.setText("test@test.it");
+        passwordField.setText("testtest");
+
 
         // Bottone Login
         loginButton = new Button("Accedi");

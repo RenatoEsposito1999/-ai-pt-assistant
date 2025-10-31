@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 public class DashboardView extends BorderPane {
 
     private Label welcomeLabel;
+    private Label emailLabel;
     private Button logoutButton;
     private Button addClientButton;
     private TableView<Client> clientsTable;
@@ -52,8 +53,8 @@ public class DashboardView extends BorderPane {
         welcomeLabel = new Label("Benvenuto, [Username]");
         welcomeLabel.setStyle("-fx-text-fill: #2c3e50; -fx-font-size: 24px; -fx-font-weight: bold;");
         
-        Label emailLabel = new Label("Email: [email@example.com]");
-        emailLabel.setStyle("-fx-text-fill: #7f8c8d; -fx-font-size: 14px;");
+        this.emailLabel = new Label("Email: [email@example.com]");
+        this.emailLabel.setStyle("-fx-text-fill: #7f8c8d; -fx-font-size: 14px;");
         
         infoBox.getChildren().addAll(welcomeLabel, emailLabel);
         
@@ -341,8 +342,8 @@ public class DashboardView extends BorderPane {
     // Metodi per aggiornare la vista
     public void setUserInfo(String username, String email) {
         welcomeLabel.setText("Benvenuto, " + username);
-        // Puoi aggiungere un campo emailLabel se vuoi mostrare anche l'email
-    }
+        emailLabel.setText("Email: " + email);
+    }   
 
     public void updateStats(int totalClients) {
         statsLabel.setText("Totale clienti: " + totalClients);

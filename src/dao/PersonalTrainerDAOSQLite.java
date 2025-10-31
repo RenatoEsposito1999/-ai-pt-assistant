@@ -42,7 +42,7 @@ public class PersonalTrainerDAOSQLite{
         Map<String, String> credentials = new HashMap<>();
         
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT email, password FROM personal_trainer WHERE email = ? AND password = ?";
+            String sql = "SELECT email, username FROM personal_trainer WHERE email = ? AND password = ?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, email);
                 stmt.setString(2, password);
@@ -50,7 +50,7 @@ public class PersonalTrainerDAOSQLite{
                 ResultSet rs = stmt.executeQuery();
                 if (rs.next()) {
                     credentials.put("email", rs.getString("email"));
-                    credentials.put("password", rs.getString("password"));
+                    credentials.put("username", rs.getString("username"));
                 }
             }
         }
