@@ -2,6 +2,7 @@ package src;
 
 import javafx.stage.Stage;
 import src.view.MainView;
+import src.controller.DashboardController;
 import src.controller.LoginController;
 import src.controller.NavigationController;
 import src.controller.SingUpController;
@@ -24,8 +25,8 @@ public class MainNavigationController implements NavigationController {
     }
 
     public void showDashboard(PersonalTrainer pt_model){
-        // Quando implementerai la dashboard, la caricherai qui
-        // mainView.setCenter(new DashboardView());
+        DashboardController dashboardController = new DashboardController(this, pt_model);
+        mainView.setCenter(dashboardController.getView());
         // Creo controller dashboard e setto this mainview set center a controller.getview()
     }
 

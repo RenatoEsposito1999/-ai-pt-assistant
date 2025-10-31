@@ -37,7 +37,7 @@ public class SingUpController {
             });
         }
     
-
+    
     public SignUpView getView(){
         return this.view;
     }
